@@ -1,7 +1,18 @@
 # CRUD-lista-de-tareas
 
 Lista de tarea con las funciones de **Crear, Leer, Actualizar y Eliminar** tareas.
-- la base de datos tiene solo una tabla.
+
+### Herramientas utilizadas en el proyecto
+- Python
+- Javascript
+- Css
+- Jquery
+- Flask
+- SweetAlert <a href="https://sweetalert2.github.io/">Link</a>
+- Toastr para las notificaciones <a href="https://github.com/CodeSeven/toastr">Link</a>
+
+
+Unica tabla de la base de datos.
 
 <img src="https://user-images.githubusercontent.com/61121429/148102921-cea0cbff-b9a4-4cd3-bb2f-bef1dd584f6b.png"></img>
 
