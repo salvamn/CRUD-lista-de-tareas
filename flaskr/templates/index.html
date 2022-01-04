@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title><link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div id="contenedor">
+
+
+
+        <div id="contenedor-crear-tarea">
+
+
+
+            <div class="crear-tarea">
+                <div class="titulo">
+                    <h1>Crea una Tarea</h1>
+                </div>
+                <div>
+                    <label for="nombre-tarea">Nombre de la tarea</label>
+                    <input type="text" name="nombre-tarea" id="nombre-tarea" placeholder="Reunión 12:00" required>
+                </div>
+
+                <div>
+                    <label for="contenido-tarea">Pequeña descripción de la tarea</label>
+                    <textarea name="contenido-tarea" id="contenido-tarea" placeholder="Llevar laptop y colacion (max 200 caracteres)" required maxlength="200"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit" id="crear-tarea">Crear Tarea</button>  
+                </div>
+
+                <div class="leyenda">
+                    <div id="disponible">
+                        <div class="cuadrado"></div>
+                        Tarea disponible
+                    </div>
+                    <div id="completado">
+                        <div class="cuadrado"></div>
+                        Tarea completada
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+
+        <div id="contenedor-mostrar-tareas">
+            <div id="tarea">
+                {% for llave in datos.keys() %}
+                    {% if datos[llave]["estado"] == 1 %}
+                        <div
+                        style="background-color: rgba(29, 29, 29, 0.233);
+                        text-decoration: line-through;
+                        color: rgb(0, 0, 0);"
+                        class="contenedor-tarea-id" 
+                        id="{{ datos[llave]['id'] }}">
+                            <h4>{{ datos[llave]["nombre_tarea"] }}</h4>
+                            <span>{{ datos[llave]["fecha"] }}</span>
+                            <div class='div-btn'> 
+                                <button id="{{ datos[llave]['id'] }}" class='btn-eliminar btn-opcion'>Eliminar</button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="contenedor-tarea-id" id="{{ datos[llave]['id'] }}">
+                            <h4>{{ datos[llave]["nombre_tarea"] }}</h4>
+                            <span>{{ datos[llave]["fecha"] }}</span>
+                            <div class='div-btn'>
+                                <button id="{{ datos[llave]['id'] }}" class='btn-mostrar btn-opcion'>Mas</button>
+                                <button id="{{ datos[llave]['id'] }}" class='btn-eliminar btn-opcion'>Eliminar</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
+
+
+<!-- JQUERY -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<!-- TOASTR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+<!-- SWEETALERT -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- STATIC JS -->
+<script src="{{ url_for('static', filename='js/tareas.js') }}"></script>

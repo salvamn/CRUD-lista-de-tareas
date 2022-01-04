@@ -1,0 +1,9 @@
+venv
+venv/
+
+clases
+
+*.pyc
+__pycache__/
+
+docs.txt
